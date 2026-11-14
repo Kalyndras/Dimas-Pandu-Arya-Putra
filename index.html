@@ -123,16 +123,6 @@ h1 span:last-child{background:linear-gradient(100deg,var(--gold),var(--lime) 35%
 .qr{background:transparent;color:#fff;border:2px solid var(--lime);border-radius:99px;padding:8px 16px;font:700 .95rem 'Bricolage Grotesque',sans-serif;cursor:pointer}
 .qr:active{background:var(--lime);color:#1d2a00}
 
-/* Dulu & sekarang */
-.then{display:flex;align-items:center;justify-content:center;gap:12px}
-.then figure{position:relative;flex:1;max-width:240px;background:#fff;padding:8px 8px 12px;border-radius:4px;box-shadow:0 12px 26px #0005;transform:rotate(-3deg)}
-.then figure::before{content:"";position:absolute;top:-12px;left:50%;width:64px;height:22px;margin-left:-32px;background:#ffd23fcc;transform:rotate(3deg)}
-.then figure:last-child{transform:rotate(3deg)}
-.then img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
-.then figure.kid img{background:#14020a;object-fit:contain}
-.then span{font-size:2rem;animation:bob 1.6s infinite}
-.then-t{text-align:center;font-family:'Caveat',cursive;font-size:1.7rem;margin-top:24px;line-height:1.35}
-
 /* Strip */
 .strip{overflow:hidden;margin:10px 0}
 .track{display:flex;gap:12px;width:max-content;animation:mq 46s linear infinite}
@@ -399,10 +389,6 @@ footer{text-align:center;color:var(--mute);padding:10px 20px 130px;font-family:'
   <section class="rv"><h2 class="tag l">chat dari aku</h2><p class="lead">Ada pesan masuk. Balas kalau mau 👀</p>
     <div class="chatbox glass"><div class="chath"><div class="ava">💕</div><div id="chName"></div></div><div class="chat" id="chat"></div><div id="qrs"></div></div></section>
 
-  <div class="band paper"><section class="rv"><h2 class="tag p">dulu dan sekarang</h2>
-    <div class="then"><figure class="kid"><img id="imgDulu" alt="Dulu"></figure><span>→</span><figure><img id="imgNow" alt="Sekarang"></figure></div>
-    <p class="then-t" id="thenTxt"></p></section></div>
-
   <div class="band dark rv"><section><h2 class="tag w">kenangan kita</h2><p class="tip">Ketuk foto untuk memperbesar, tahan untuk menjeda</p><div class="strip" id="s1"></div><div class="strip rev" id="s2"></div></section></div>
 
   <div class="tick lm rv"><div class="tk" id="tk2"></div></div>
@@ -492,9 +478,22 @@ const CONFIG = {
   // Angka kebersamaan: nilai pada saat "sejak", lalu bertambah otomatis
   hitung: {hari: 637, jam: 15171, menit: 910297, sejak: "2026-11-15T03:40:00+07:00"},
   surat: "Hai, sayang.\n\nSudah {hari} hari aku punya kamu, dan tiap harinya aku makin bersyukur. Hari ini kamu nambah umur, tapi buatku kamu tetap orang yang sama: yang bikin aku merasa aman, yang sabar sama semua cerewetku, dan yang diam-diam selalu ada.\n\nMungkin kamu jarang dengar ini, jadi hari ini aku mau bilang langsung: aku bangga sama kamu. Sama semua capek yang kamu simpan sendiri, sama usaha yang nggak selalu kelihatan orang lain.\n\nKamu nggak harus selalu kuat di depanku. Di sini, kamu boleh capek, boleh mengeluh, boleh jadi dirimu sendiri.\n\nTerima kasih sudah memilih aku, di hari baik maupun hari yang menyebalkan. Semoga umur barumu penuh sehat, rezeki, dan mimpi-mimpi yang pelan-pelan jadi nyata. Dan kalau belum, aku tetap di sampingmu, nemenin kamu sampai ke sana.\n\nSelamat ulang tahun, cintaku. Kamu berharga banget buatku.",
-  dulu: "foto/stiker.png", sekarang: "foto/10.jpg",
-  teksDulu: "Anak kecil ini tumbuh jadi laki-laki yang bikin aku jatuh sayang. Aku bersyukur banget kenal kamu.",
-  foto: ["foto/8.jpg","foto/2.jpg","foto/12.jpg","foto/6.jpg","foto/10.jpg","foto/3.jpg","foto/9.jpg","foto/5.jpg","foto/11.jpg","foto/1.jpg","foto/4.jpg","foto/7.jpg","foto/13.jpg"],
+
+  /* Foto: semua file ada di folder foto/ (huruf besar .JPG harus sama persis) */
+  sekarang: "foto/DSC09181.JPG",   // dipakai sebagai sampul pemutar lagu
+  foto: [
+    "foto/DSC09181.JPG",
+    "foto/DSC09182.JPG",
+    "foto/DSC09184.JPG",
+    "foto/DSC09185.JPG",
+    "foto/DSC09195.JPG",
+    "foto/DSC09207.JPG",
+    "foto/DSC09208.JPG",
+    "foto/DSC09209.JPG",
+    "foto/DSC09214.JPG",
+    "foto/DSC09215.JPG",
+    "foto/DSC09218.JPG"
+  ],
 
   /* Chat */
   chat: [
@@ -625,7 +624,6 @@ $('introTxt').textContent = `Ada kejutan untukmu, ${CONFIG.nama}`;
 $('sub').textContent = `hari ini hari spesialmu, ${CONFIG.nama}`;
 $('musicTxt').textContent = CONFIG.judulMusik;
 $('foot').textContent = `Dibuat dengan cinta oleh ${CONFIG.dari}`;
-$('imgDulu').src = CONFIG.dulu; $('imgNow').src = CONFIG.sekarang; $('thenTxt').textContent = CONFIG.teksDulu;
 $('chName').innerHTML = `${CONFIG.dari} 💕<small>online</small>`;
 const tkTxt = [`selamat ulang tahun`, CONFIG.nama, `❤`, `${HARI} hari bareng`, `✦`].join('  ✦  ') + '  ✦  ';
 ['tk1','tk2','tk3'].forEach(id => $(id).textContent = tkTxt.repeat(8));
